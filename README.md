@@ -1,4 +1,4 @@
-<div style="text-align:center"><h1>RedLock——让 Redis锁变得简单</h1></div>
+<div style="text-align:center"><h1>RedisLock——让 Redis 锁变得简单</h1></div>
 
 # 1. 项目介绍
 该项目主要简化了使用 redis 分布式事务所的操作，实现傻瓜式加锁，释放锁的操作，并优雅的实现了等待锁释放的操作。等待锁释放的过程主要是使用了redis的监听功能，所以在使用该项目前，要确保redis已经开启了key事件监听，即“Ex”。  
@@ -11,7 +11,7 @@
 ```xml
 <dependency>
     <groupId>com.github.chimmhuang</groupId>
-    <artifactId>RedLock</artifactId>
+    <artifactId>redislock</artifactId>
     <version>1.0-RELEASE</version>
 </dependency>
 ```
@@ -111,7 +111,7 @@ public class RedisListenerTest {
 ```
 
 # 3. 参与贡献
-非常欢迎你的加入！[提一个 Issue](https://github.com/chimmhuang/redlock/issues/new) 或者提交一个 Pull Request。
+非常欢迎你的加入！[提一个 Issue](https://github.com/chimmhuang/redislock/issues/new) 或者提交一个 Pull Request。
 
 # 4. 联系作者
 QQ(Wechat) : 905369866  
