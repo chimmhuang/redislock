@@ -19,7 +19,7 @@
 <dependency>
     <groupId>com.github.chimmhuang</groupId>
     <artifactId>redislock</artifactId>
-    <version>1.0-RELEASE</version>
+    <version>1.0</version>
 </dependency>
 ```
 
