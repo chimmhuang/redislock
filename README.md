@@ -55,16 +55,16 @@ public class RedisConfig {
     }
 
     @Bean
-    public RedLock redLock(RedisTemplate redisTemplate) {
-        return new redLock(redisTemplate);
+    public RedisLock redisLock(RedisTemplate redisTemplate) {
+        return new RedisLock(redisTemplate);
     }
 }
 ```
 
 ## 2.3 使用
-1. 注入 `redLock`
-2. 使用 `redLock.lock()` 进行加锁
-3. 使用 `redLock.unlock()` 进行解锁
+1. 注入 `redisLock`
+2. 使用 `redisLock.lock()` 进行加锁
+3. 使用 `redisLock.unlock()` 进行解锁
 
 以下提供一个单元测试的案例（火车站卖票的案例）
 ```java
@@ -73,7 +73,7 @@ public class RedisConfig {
 public class RedisListenerTest {
 
     @Autowired
-    private RedLock redLock;
+    private RedisLock redisLock;
 
     /** 100张票 */
     private static Integer count = 100;
