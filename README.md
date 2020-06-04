@@ -23,7 +23,7 @@
 </dependency>
 ```
 
-## 2.2 注册 RedLock
+## 2.2 注册 RedisLock
 
 - 方式一（推荐）： 在项目的启动类上添加包扫描的路径
 ```java
