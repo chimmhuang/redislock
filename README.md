@@ -29,10 +29,10 @@
 ```java
 @ComponentScan(basePackages = "com.github.chimmhuang.redislock")
 @SpringBootApplication
-public class DataSteelQuotesApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(DataSteelQuotesApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }
 ```
@@ -63,8 +63,8 @@ public class RedisConfig {
 
 ## 2.3 使用
 1. 注入 `redisLock`
-2. 使用 `redisLock.lock()` 进行加锁
-3. 使用 `redisLock.unlock()` 进行解锁
+2. 使用 `redisLock.lock(key,expire,timeUnit)` 进行加锁
+3. 使用 `redisLock.unlock(key)` 进行解锁
 
 以下提供一个单元测试的案例（火车站卖票的案例）
 ```java
