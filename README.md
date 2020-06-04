@@ -1,5 +1,12 @@
 <div style="text-align:center"><h1>RedisLock——让 Redis 锁变得简单</h1></div>
 
+<p align="center">
+	<img src='https://img.shields.io/github/license/chimmhuang/resetAutoincrement' alt='lisence'></img>
+	<img src="https://img.shields.io/badge/JDK-1.8%2B-red" alt='jdk'></img>
+	<img src="https://img.shields.io/badge/spring--version-%3E%3D2.1-success"/>
+	<img src="https://img.shields.io/badge/redis--version-%3E%3D2.2.0-red"/>
+</p>
+
 # 1. 项目介绍
 该项目主要简化了使用 redis 分布式事务所的操作，实现傻瓜式加锁，释放锁的操作，并优雅的实现了等待锁释放的操作。等待锁释放的过程主要是使用了redis的监听功能，所以在使用该项目前，要确保redis已经开启了key事件监听，即“Ex”。  
 
