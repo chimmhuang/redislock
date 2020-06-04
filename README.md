@@ -1,4 +1,4 @@
-<div style="text-align:center"><h1>RedisLock——让 Redis 锁变得简单</h1></div>
+<h1 style="text-align: center">RedisLock——让 Redis 锁变得简单</h1>
 
 <p align="center">
 	<img src='https://img.shields.io/github/license/chimmhuang/resetAutoincrement' alt='lisence'></img>
