@@ -10,7 +10,6 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.util.Collections;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 基于 redisTemplate 的 redis 分布式锁
@@ -32,12 +31,11 @@ public class RedisLock {
      * 加锁
      *
      * @param key      锁名称
-     * @param expire   锁过期时间
-     * @param timeUnit 时间单位
+     * @param expire   锁过期时间（单位：秒）
      */
-    public void lock(String key, long expire, TimeUnit timeUnit) {
+    public void lock(String key, long expire) {
         //加锁
-        if (tryLock(key, expire, timeUnit)) {
+        if (tryLock(key, expire)) {
             return;
         }
 
@@ -45,7 +43,7 @@ public class RedisLock {
         waitForLock(key);
 
         // 再次尝试加锁
-        lock(key, expire, timeUnit);
+        lock(key, expire);
     }
 
     /**
@@ -53,9 +51,15 @@ public class RedisLock {
      *
      * @return 是否加锁成功
      */
-    private boolean tryLock(String key, long expire, TimeUnit timeUnit) {
-        Boolean aBoolean = redisTemplate.opsForValue().setIfAbsent(key, Thread.currentThread().getName(), expire, timeUnit);
-        return aBoolean != null && aBoolean;
+    private boolean tryLock(String key, long expire) {
+
+        String script = "if redis.call('setNx',KEYS[1],ARGV[1]) then if redis.call('get',KEYS[1])==ARGV[1] then return redis.call('expire',KEYS[1],ARGV[2]) else return 0 end end";
+
+        RedisScript<Long> redisScript = new DefaultRedisScript<>(script, Long.class);
+
+        Object result = redisTemplate.execute(redisScript, new StringRedisSerializer(), new StringRedisSerializer(), Collections.singletonList(key), Thread.currentThread().getName(), expire + "");
+
+        return 1 == Integer.parseInt(result.toString());
     }
 
     /**
