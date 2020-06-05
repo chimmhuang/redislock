@@ -120,6 +120,11 @@ public class RedisListenerTest {
 # 3. 参与贡献
 非常欢迎你的加入！[提一个 Issue](https://github.com/chimmhuang/redislock/issues/new) 或者提交一个 Pull Request。
 
+目前仅仅是实现了加锁解锁的简单过程，还有其他操作有待完善和测试，如：
+  
+-[ ] 在 redis 的集群环境中，需要监听每一个 redis 的 key 事件
+-[ ] 在 redis 的主备模式下，可能会存在主备 redis 切换的期间，数据(key)未同步过去问题
+
 # 4. 联系作者
 QQ(Wechat) : 905369866  
 Email : chimmhuang@163.com
