@@ -19,7 +19,7 @@
 <dependency>
     <groupId>com.github.chimmhuang</groupId>
     <artifactId>redislock</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -63,7 +63,7 @@ public class RedisConfig {
 
 ## 2.3 使用
 1. 注入 `redisLock`
-2. 使用 `redisLock.lock(key,expire,timeUnit)` 进行加锁
+2. 使用 `redisLock.lock(key,expire)` 进行加锁
 3. 使用 `redisLock.unlock(key)` 进行解锁
 
 以下提供一个单元测试的案例（火车站卖票的案例）
@@ -100,7 +100,7 @@ public class RedisListenerTest {
         @Override
         public void run() {
             while (count > 0) {
-                redisLock.lock("ticketLock", 3L, TimeUnit.SECONDS);
+                redisLock.lock("ticketLock", 3L);
                 if (count > 0) {
                     System.out.println(Thread.currentThread().getName() + "售出第" + (count--) + "张火车票");
                 }
