@@ -6,7 +6,7 @@
 
     <groupId>com.github.chimmhuang</groupId>
     <artifactId>redislock</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>redislock</name>
     <description>An easy-to-use redis lock 基于 redisTemplate 的傻瓜式操作 redis 锁</description>
